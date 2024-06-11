@@ -1,6 +1,6 @@
-from data.dto import FrontRuntime, BackRuntime, Runtime
+from data.dto import ImgPath, FrontRuntime, BackRuntime, Runtime
 from frontend.front import init_game_screen
-from backend.back import init_objects
+from backend.init_objects import init_objects
 from controllers.controller import game_loop
 
 
@@ -9,8 +9,13 @@ def main() -> None:
     width: int = 500
     height: int = 1200
 
-    front_runtime: FrontRuntime = init_game_screen(width, height)
-    back_runtime: BackRuntime = init_objects(height, width)
+    back_runtime: BackRuntime = init_objects()
+    imgs_path: ImgPath = ImgPath(
+        "data/imgs/red-car.png", "data/imgs/road.png", "data/imgs/white-car.png"
+    )
+    front_runtime: FrontRuntime = init_game_screen(
+        back_runtime, imgs_path, width, height
+    )
     runtime: Runtime = Runtime(front_runtime, back_runtime)
 
     game_loop(runtime)

@@ -1,5 +1,5 @@
 from ..utils import ro_statment, v_h_statment
-from car import CarInterface, Car
+from .car import Car
 
 
 class CarAi(Car):
@@ -13,7 +13,7 @@ class CarAi(Car):
         distance: int,
     ) -> None:
         """Инициализация ии_машины."""
-        super.__init__(self, x, y, max_speed, koeff)
+        super().__init__(x, y, max_speed, koeff)
         self.lead_car: Car = lead_car
         self.distance = distance
         self.curent_distance = distance

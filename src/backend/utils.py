@@ -4,16 +4,7 @@ from scipy.interpolate import interp1d
 
 
 def ro_statment(h: float, h_max: float, d: float) -> float:
-    """_summary_
-
-    Args:
-        h (float): _description_
-        h_max (float): _description_
-        d (float): _description_
-
-    Returns:
-        float: _description_
-    """
+    """"""
     res: float = 0
     if h_max + d >= h >= h_max:
         temp = ((h - h_max) / d) - 1
@@ -25,16 +16,7 @@ def ro_statment(h: float, h_max: float, d: float) -> float:
 
 
 def v_h_statment(h: float, h_max: float, max_speed: int) -> float:
-    """_summary_
-
-    Args:
-        h (float): _description_
-        h_max (float): _description_
-        max_speed (int): _description_
-
-    Returns:
-        float: _description_
-    """
+    """"""
     res: float = 0
     x = np.array([0, 5, 20, 45, 80, 120, 200, 1000])
     y = np.array([0, 25, 50, 75, 105, 125, 201, 1000])

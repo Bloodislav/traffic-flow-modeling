@@ -25,7 +25,7 @@ class Map:
 
     def update(self, car_speed: float, car_angle: float) -> None:
         """Обновление позиции."""
-        self.speed = car_speed
+        self.speed = car_speed.real
         self.x -= int(math.cos(math.radians(-car_angle)) * self.speed)
 
         self.x = 0 if self.x <= -self.width else self.x
