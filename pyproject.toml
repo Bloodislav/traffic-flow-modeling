@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "modeling-car"
+version = "0.1.0"
+description = ""
+authors = ["Ronin Shawanda <roninsha@student.21-school.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^1.26.4"
+sumo = "^2.3.8"
+traci = "^1.20.0"
+matplotlib = "^3.9.0"
+pyqt6 = "^6.7.0"
+scipy = "^1.13.1"
+pygame = "^2.5.2"
+black = "^24.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
