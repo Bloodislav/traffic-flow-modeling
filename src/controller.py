@@ -1,7 +1,7 @@
 import pygame
 
 from models.car import Car
-from models.dto import Runtime
+from data.dto import Runtime
 from frontend.front import draw_object
 
 def game_loop(runtime: Runtime) -> None:
@@ -36,7 +36,7 @@ def game_loop(runtime: Runtime) -> None:
         running = move_player(runtime.back.car)
         for event in pygame.event.get():
             running = not (event.type == pygame.QUIT)
-        
+
         draw_object(runtime)
         pygame.display.flip()
 
@@ -79,5 +79,3 @@ def move_player(car: Car) -> bool:
         car.decelerate(0.1) if ((car.speed > 0.1) or (car.speed < -0.1)) else car.stop()
 
     return running
-
-

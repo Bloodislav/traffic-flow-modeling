@@ -1,4 +1,4 @@
-from models.dto import FrontRuntime, BackRuntime, Runtime
+from data.dto import FrontRuntime, BackRuntime, Runtime
 from frontend.front import init_game_screen
 from backend.back import init_objects
 from .controller import game_loop
