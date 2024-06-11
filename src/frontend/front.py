@@ -1,6 +1,6 @@
 import pygame
 
-from models.dto import FrontRuntime, Runtime
+from data.dto import FrontRuntime, Runtime
 
 
 def init_game_screen(hight: int, width: int) -> FrontRuntime:
@@ -22,8 +22,3 @@ def draw_object(runtime: Runtime) -> None:
 
     for i in range(runtime.back.count_car):
         runtime.back.car_ai_list[i].draw(runtime.front.screen)
-
-    speed_text = runtime.front.main_font.render(
-        f"Forward_speed: {round(runtime.back.car.speed, 1)}", 1, (0, 0, 0)
-    )
-    runtime.front.screen.blit(speed_text, (10, 500 - speed_text.get_height() - 40))
