@@ -1,4 +1,4 @@
-from ..utils import ro_statment, v_h_statment
+from ..utils import ro_statment, v_h_statment, v_h_statment_reverse
 from .car import Car
 
 
@@ -24,6 +24,8 @@ class CarAi(Car):
             1 - (self.speed / self.max_speed) ** 0.8
         ) + (1 - ro) * self.b_accceler * (v_h - self.speed)
 
+        self.acceleration *= -1 if self.lead_car.speed.real < 0 else 1
+
     def move(self) -> None:
         diff_x: int = self.lead_car.x - self.x
         diff_y: int = self.lead_car.y - self.y
@@ -31,6 +33,13 @@ class CarAi(Car):
 
         ro = ro_statment(diff_x, self.distance, 35)
         v_h = v_h_statment(diff_x, self.distance, self.max_speed)
-        self.accelerate(ro, v_h)
+
+        if self.lead_car.speed.real < 0:
+            ro, v_h = 1 / (1 + ro), 1 / (1 + v_h)
+            self.accelerate(v_h, ro)
+        else:
+            self.accelerate(ro, v_h)
+
+        print(f"{v_h=}, {ro=}, {self.acceleration=}")
 
         self.speed += float(self.acceleration.real)

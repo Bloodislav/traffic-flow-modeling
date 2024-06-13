@@ -27,3 +27,19 @@ def v_h_statment(h: float, h_max: float, max_speed: int) -> float:
         res = max_speed * (temp / (1 + temp))
 
     return res.real
+
+
+def v_h_statment_reverse(h: float, h_max: float, max_speed: int) -> float:
+    """"""
+    res: float = 0
+    x = np.array([0, 5, 20, 45, 80, 120, 200, 1000])
+    y = np.array([0, 12, 25, 37, 52, 62, 100, 500])
+    y = y[::-1]
+    f2 = interp1d(x, y, kind="cubic")
+
+    if h > h_max:
+        temp: float = pow((h - h_max) / f2(h), 3)
+        res = max_speed * (temp / (1 + temp))
+
+    return res.real / (res.real + 1)
+    # return res.real
