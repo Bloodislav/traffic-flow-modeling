@@ -38,7 +38,7 @@ class Car(CarInterface):
 
     def turn(self, angle_change: float) -> None:
         """Поворот машины на заданный угол."""
-        self.angle += int(angle_change * abs(self.speed / self.max_speed * 0.8))
+        self.angle += int(angle_change * abs(self.speed / self.max_speed))
 
     def move(self) -> None:
         """Обмновление скорости"""
@@ -52,10 +52,10 @@ class Car(CarInterface):
     def update(self) -> None:
         """Обновление позиции авто."""
         # Ограничиваем скорость максимальным значением
-        if self.speed.real > self.max_speed:
-            self.speed = self.max_speed
-        elif self.speed.real < -self.max_speed / 1.5:
-            self.speed = -self.max_speed / 1.5
+        if self.speed.real >= 0:
+            self.speed = min(self.speed.real, self.max_speed)
+        else:
+            self.speed = max(self.speed.real, -self.max_speed / 3)
 
         # Обновляем позицию автомобиля
         self.x += int(math.cos(math.radians(-self.angle)) * self.speed.real)
