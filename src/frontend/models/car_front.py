@@ -9,6 +9,7 @@ from backend.models.car_ai import CarAi
 
 class CarFront:
     def __init__(self, image_path: str, model_car: Union[Car | CarAi]) -> None:
+        """Инициализация класса для отрисовки"""
         self.image: pygame.Surface = pygame.image.load(image_path)
         self.model: Union[Car | CarAi] = model_car
         self.image = pygame.transform.rotate(self.image, -90)
@@ -20,10 +21,12 @@ class CarFront:
         )
 
     def update_model(self) -> None:
+        """Обновление данных в модели."""
         self.model.move()
         self.model.update()
 
     def moving_car(self) -> None:
+        """Перемещения лидирующей машины."""
         keys = pygame.key.get_pressed()
         moved: bool = False
 
@@ -53,8 +56,12 @@ class CarFront:
 
         # Остановка
         if keys[pygame.K_SPACE]:
-            self.model.accelerate(-1, b)
-            moved = True
+            if self.model.speed.real > 0:
+                self.model.accelerate(-1, b)
+                moved = True
+            elif self.model.speed.real < 0:
+                self.model.accelerate(1, b)
+                moved = True
 
         # Замедление
         if not moved:
