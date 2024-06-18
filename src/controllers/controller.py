@@ -11,14 +11,15 @@ def game_loop(runtime: Runtime) -> None:
 
     while running:
         runtime.front.clock.tick(fps)
+        # runtime.front.clock.tick_busy_loop(fps)
 
         # 1. Update data
-        runtime.back.car.move()
         runtime.back.car.update()
-        runtime.front.objects.map.update(runtime.back.car.speed, runtime.back.car.angle)
+        runtime.front.objects.map.update(
+            runtime.back.car.speed_x, runtime.back.car.angle
+        )
 
         for ai_car in runtime.back.car_ai_list:
-            ai_car.move()
             ai_car.update()
 
         # 2. User input
