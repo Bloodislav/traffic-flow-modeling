@@ -2,25 +2,30 @@ from .models.car import Car
 from .models.car_ai import CarAi
 from data.dto import BackRuntime
 
+# TODO DTO - Setting_model
+
 
 def init_objects() -> BackRuntime:
-    car: Car = Car(500, 275, 25.0, 1.01)
-
-    distance: int = 100
-
-    car_ai_list: list[CarAi] = [
-        CarAi(400, 275, 25.0, 1.01, car, distance),
-    ]
     count_car: int = 4
+    car_length: float = 4.0
+    max_speed: float = 17.0
+    koeff: float = 1.01
+
+    x: int = count_car * 2 * car_length
+    y: int = 0
+
+    car: Car = Car(x + 2 * car_length, y, max_speed, koeff)
+    car_ai_list: list[CarAi] = [
+        CarAi(x, y, max_speed, koeff, car),
+    ]
 
     for i in range(1, count_car):
         car_ai: CarAi = CarAi(
-            x=100 * (count_car - i),
-            y=275,
-            max_speed=25.0,
-            koeff=1.01,
+            x=x - i * 2 * car_length,
+            y=y,
+            max_speed=max_speed,
+            koeff=koeff,
             lead_car=car_ai_list[i - 1],
-            distance=distance,
         )
         car_ai_list.append(car_ai)
 
