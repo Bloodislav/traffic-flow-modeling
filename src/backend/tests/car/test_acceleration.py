@@ -1,5 +1,4 @@
 from models.car import Car
-from test_setting import car_object, a_accel
 
 
 # ----=== Acceleration ===--- #

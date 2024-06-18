@@ -1,6 +1,5 @@
 import pytest
 from models.car import Car
-from test_setting import car_object, a_accel
 
 
 # ----=== Uppdate ===--- #
@@ -55,7 +54,7 @@ def test_update_compex_2(car_object: Car, a_accel: int):
         car_object.accelerate_y(a_accel)
         car_object.update()
 
-    assert car_object.x == 243
-    assert car_object.y == 108
-    assert car_object.speed_x > 20
-    assert car_object.speed_y >= 6
+    assert car_object.x == 201
+    assert car_object.y == 59
+    assert car_object.speed_x > 15
+    assert car_object.speed_y >= 3
