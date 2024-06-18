@@ -3,22 +3,65 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map_v_1.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map/map_v_1.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 2,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 106.75,
+                "y": 210.75
+            }
+        },
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map/tilemap.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map2/Base Level.tmx": {
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 0.33,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 868.1818181818181,
+                "y": 577.2727272727273
+            }
+        },
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map2/Level Elements.tsx": {
+            "scaleInDock": 1
+        },
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map2/outside_bg.tsx": {
+            "scaleInDock": 1
+        },
         "map_v_1.tmx": {
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 415,
-                "y": 361
+                "x": 401,
+                "y": 359
+            }
+        },
+        "map_v_2.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 391.33333333333326,
+                "y": 371.33333333333337
             }
         },
         "tilemap.tsx": {
             "scaleInDock": 2,
-            "scaleInEditor": 2
+            "scaleInEditor": 1
         },
         "tilemap_packed.tsx": {
             "scaleInDock": 3,
@@ -32,13 +75,14 @@
     "map.tileWidth": 16,
     "map.width": 50,
     "openFiles": [
-        "map_v_1.tmx",
-        "tilemap.tsx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
-        "tilemap.tsx",
         "map_v_1.tmx",
+        "tilemap.tsx",
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map2/Base Level.tmx",
+        "/home/roninsha/project/2024/diplom/Pygame-Camera/Game/assets/map/map_v_1.tmx",
+        "map_v_2.tmx",
         "tilemap_packed.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
