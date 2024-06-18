@@ -18,7 +18,7 @@ class CarFront:
 
     def draw(self, screen: pygame.Surface) -> None:
         """Отрисовка машины на экране."""
-        cord: list = (self.model.x * self.image.get_width() * 0.2, self.model.y + 185)
+        cord: list = (self.model.x, self.model.y + 185)
         blit_rotate_center(screen, self.image, cord, self.model.angle)
 
     def update_model(self) -> None:
@@ -70,19 +70,3 @@ class CarFront:
                 self.model.accelerate_y(4 * -b)
             elif self.model.speed_y.real < 0:
                 self.model.accelerate_y(4 * b)
-
-        # # Замедление
-        # if not moved:
-        #     if (self.model.speed_x.real > 0.1):
-        #         self.model.accelerate_x(-0.1)
-        #     elif (self.model.speed_x.real < -0.1):
-        #         self.model.accelerate_x(0.1)
-        #     else:
-        #         self.model.stop_x()
-
-        #     if (self.model.speed_y.real > 0.1):
-        #         self.model.accelerate_y(-0.1)
-        #     elif (self.model.speed_y.real < -0.1):
-        #         self.model.accelerate_y(0.1)
-        #     else:
-        #         self.model.stop_y()
