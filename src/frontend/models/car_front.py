@@ -12,13 +12,14 @@ class CarFront:
         """Инициализация класса для отрисовки"""
         self.image: pygame.Surface = pygame.image.load(image_path)
         self.model: Union[Car | CarAi] = model_car
+
         self.image = pygame.transform.rotate(self.image, -90)
+        self.image = pygame.transform.scale_by(self.image, 0.5)
 
     def draw(self, screen: pygame.Surface) -> None:
         """Отрисовка машины на экране."""
-        blit_rotate_center(
-            screen, self.image, (self.model.x, self.model.y), self.model.angle
-        )
+        cord: list = (self.model.x * self.image.get_width() * 0.2, self.model.y + 185)
+        blit_rotate_center(screen, self.image, cord, self.model.angle)
 
     def update_model(self) -> None:
         """Обновление данных в модели."""
@@ -30,43 +31,58 @@ class CarFront:
         keys = pygame.key.get_pressed()
         moved: bool = False
 
-        a: float = self.model.a_accceler / 10
-        b: float = self.model.b_accceler / 10
+        a: float = self.model.a_accceler / 3
+        b: float = self.model.b_accceler / 3
         angle: float = 2.5
 
         # Ускорение
         if keys[pygame.K_d]:
-            self.model.accelerate(1, a)
-            moved = True
+            self.model.accelerate_x(a)
 
         # Замедление
         if keys[pygame.K_a]:
-            self.model.accelerate(-1, a)
+            self.model.accelerate_x(-a)
+            # self.model.accelerate_y(-a)
             moved = True
 
         # Поворот влево
         if keys[pygame.K_w]:
-            self.model.turn(angle)
+            self.model.accelerate_y(-a)
+
+            # self.model.turn(angle)
             moved = True
 
         # Поворот вправо
         if keys[pygame.K_s]:
-            self.model.turn(-angle)
+            self.model.accelerate_y(a)
+
+            # self.model.turn(-angle)
             moved = True
 
         # Остановка
         if keys[pygame.K_SPACE]:
-            if self.model.speed.real > 0:
-                self.model.accelerate(-1, b)
-                moved = True
-            elif self.model.speed.real < 0:
-                self.model.accelerate(1, b)
-                moved = True
+            if self.model.speed_x.real > 0:
+                self.model.accelerate_x(4 * -b)
+            elif self.model.speed_x.real < 0:
+                self.model.accelerate_x(4 * b)
 
-        # Замедление
-        if not moved:
-            (
-                self.model.accelerate(0, 0.1)
-                if ((self.model.speed.real > 0.1) or (self.model.speed.real < -0.1))
-                else self.model.stop()
-            )
+            if self.model.speed_y.real > 0:
+                self.model.accelerate_y(4 * -b)
+            elif self.model.speed_y.real < 0:
+                self.model.accelerate_y(4 * b)
+
+        # # Замедление
+        # if not moved:
+        #     if (self.model.speed_x.real > 0.1):
+        #         self.model.accelerate_x(-0.1)
+        #     elif (self.model.speed_x.real < -0.1):
+        #         self.model.accelerate_x(0.1)
+        #     else:
+        #         self.model.stop_x()
+
+        #     if (self.model.speed_y.real > 0.1):
+        #         self.model.accelerate_y(-0.1)
+        #     elif (self.model.speed_y.real < -0.1):
+        #         self.model.accelerate_y(0.1)
+        #     else:
+        #         self.model.stop_y()

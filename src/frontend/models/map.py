@@ -10,7 +10,7 @@ class Map:
             self.image, (screen_width * 0.7, screen_height)
         )
 
-        self.width: int = int(screen_width * 0.50)
+        self.width: int = int(screen_width * 0.5)
         self.height: int = screen_height
 
         self.x: int = 0
