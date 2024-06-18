@@ -11,7 +11,9 @@ def main() -> None:
 
     back_runtime: BackRuntime = init_objects()
     imgs_path: ImgPath = ImgPath(
-        "data/imgs/red-car.png", "data/imgs/road.png", "data/imgs/white-car.png"
+        "/home/roninsha/project/2024/diplom/traffic-flow-modeling/src/data/imgs/red-car.png",
+        "/home/roninsha/project/2024/diplom/traffic-flow-modeling/src/data/imgs/road.png",
+        "/home/roninsha/project/2024/diplom/traffic-flow-modeling/src/data/imgs/white-car.png",
     )
     front_runtime: FrontRuntime = init_game_screen(
         back_runtime, imgs_path, width, height
