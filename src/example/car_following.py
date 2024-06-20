@@ -1,7 +1,7 @@
 from data.dto import ImgPath, FrontRuntime, BackRuntime, Runtime
 from frontend.front import init_game_screen
 from backend.init_objects import init_objects
-from controllers.controller import game_loop
+from controllers.car_follow_contr import game_loop
 
 
 def main() -> None:
