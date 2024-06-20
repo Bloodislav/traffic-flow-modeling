@@ -1,10 +1,7 @@
 import sys
 import os
-
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
-
-from numpy import random
 
 from .roy import Roy
 from .car_agent import CarAgent
@@ -13,18 +10,6 @@ from dtos.dto import Pos
 
 
 class Roy3(Roy):
-    def __indxs(self, count_agents: int, i: int):
-        indx_lead, indx_slave = (
-            [i + 1, count_agents - 1]
-            if i == 0
-            else [0, i - 1] if i == count_agents - 1 else [i + 1, i - 1]
-        )
-        return indx_lead, indx_slave
-
-    def __indxs_slave(self, count_agents: int, indx_lead: int):
-        indx_slave = count_agents - 1 if indx_lead == 0 else indx_lead - 1
-        return indx_lead, indx_slave
-
     def __find_agent(self, agents: list[CarAgent], pos: float, line: int):
         for indx, agent in enumerate(agents):
             if (agent.pos > pos) and (agent.lane == line):
@@ -151,6 +136,5 @@ class Roy3(Roy):
                 # result += temp_agent
                 result = list(set(result + temp_agent))
 
-            # ! filter by pos
             agents = result.copy()
             yield agents

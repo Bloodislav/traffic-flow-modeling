@@ -1,3 +1,8 @@
+import sys
+import os
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
 from data.dto import ImgPath, FrontRuntime, BackRuntime, Runtime
 from frontend.front import init_game_screen
 from backend.init_objects import init_objects

@@ -21,7 +21,8 @@ class CarAgent:
         self.lane: int = lane
 
         self.max_velocity: float = setting.roy.max_velocity
-        self.velocity: float = setting.roy.max_velocity
+        # self.velocity: float = setting.roy.max_velocity
+        self.velocity: float = 0
         self.change_lane_l: float = setting.roy.change_line_l
         self.change_lane_r: float = setting.roy.change_line_r
         self.changing_line: bool = False
@@ -32,6 +33,8 @@ class CarAgent:
 
         self.distance: float = 0
         self.track_complete: bool = False
+        
+        self.distance_x: float = 0.0 
 
     # ---------------------------------------------------------------------------------------------------#
     def __new_velocity(self) -> float:
