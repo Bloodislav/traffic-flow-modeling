@@ -25,7 +25,7 @@ class CarAi(Car):
 
     # ---=== Another ===--- #
     def ro_func(self, h: float, h_max: float, d: float) -> float:
-        """"""
+        """Весовая функция"""
         res: float = 0
         if h_max + d >= h >= h_max:
             temp = ((h - h_max) / d) - 1
@@ -73,8 +73,6 @@ class CarAi(Car):
             * self.prev_speed_x**2
             / 2
             * 1.1
-            # !
-            + 100
         )
 
     def target_function_f(self, x) -> float:

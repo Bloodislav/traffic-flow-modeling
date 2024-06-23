@@ -18,6 +18,8 @@ black = "^24.4.2"
 pytest = "^8.2.2"
 pydantic = "^2.7.4"
 pydantic-settings = "^2.3.3"
+osmnx = "^1.9.3"
+ipython = "^8.25.0"
 
 
 [build-system]

@@ -9,7 +9,7 @@ class RoyConfig(BaseModel):
     # ! кол-во акентов
     count_agent: int = 220
     # ! кол-во полос
-    count_lanes: int = 4
+    count_lanes: int = 3
 
     # ! радиус и длинна окржности [м]
     radius: float = 360

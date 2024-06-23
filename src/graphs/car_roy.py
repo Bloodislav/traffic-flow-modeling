@@ -48,7 +48,7 @@ def main() -> None:
         count_car: int = sum([agent.track_complete for agent in agents])
         # flow_density: float = back_sett.roy.count_agent / back_sett.roy.track_length
         flow_density: float = 1000 * (
-            back_sett.roy.count_agent / back_sett.roy.track_length
+            count_car / back_sett.roy.track_length
             + (2 * rand.randint(0, 1) - 1) * (rand.random() / 10**8)
         )
         flow_rate: float = flow_density * middle_speed
@@ -78,7 +78,7 @@ def main() -> None:
     pylab.scatter(flow_densities, flow_rates, s=2)
     pylab.xlabel("p (1/м)")
     pylab.ylabel("q (1/с)")
-    pylab.ylim([0, 600])
+    # pylab.ylim([0, 600])
     # pylab.xlim([0, 0.081])
 
     # setting graph - 2
