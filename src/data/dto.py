@@ -3,8 +3,8 @@ from pygame.font import Font
 from pygame.time import Clock
 from pygame import Surface
 
-from backend.models.car import Car
-from backend.models.car_ai import CarAi
+from backend.models.following.car import Car
+from backend.models.following.car_ai import CarAi
 
 from frontend.models.map import Map
 from frontend.models.car_front import CarFront

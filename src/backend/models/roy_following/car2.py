@@ -5,7 +5,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from dtos.dto import Pos
-from .car_agent import CarAgent
+from roy.car_agent import CarAgent
 from configs.config import setting
 
 

@@ -1,7 +1,12 @@
+import sys
+import os
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
 import pygame
 
-from .models.car_front import CarFront
-from .models.map import Map
+from frontend.models.car_front import CarFront
+from frontend.models.map import Map
 
 from data.dto import ImgPath, FrontRuntime, FrontObjects, BackRuntime
 

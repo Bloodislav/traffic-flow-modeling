@@ -5,10 +5,6 @@ from scipy.integrate import simps, quad
 
 from .car import Car
 
-# TODO: динамическое определние диставнции
-# TODO DTO
-
-
 class CarAi(Car):
     def __init__(
         self,
@@ -49,32 +45,13 @@ class CarAi(Car):
 
         return res.real
 
-    # ---=== Accelerate | Speed ===--- #
-    def accelerate(self) -> None:
-        """Закон изменения ускорения по модели следования за лидером"""
-        # diff_x: int = self.lead_car.x - self.x
-
-        # ro = self.ro_func(diff_x, self.distance_x, 35)
-        # v_h = self.v_h_func(diff_x, self.distance_x, self.max_speed_x)
-
-        # koef_1 = self.a_accceler * (1 - (self.speed_x / self.max_speed_x) ** self.koeff)
-        # koef_2 = self.b_accceler * (self.speed_x - v_h)
-
-        # if self.lead_car.speed.real >= 0:
-        #     self.a = (ro) * koef_1 + (ro - 1) * koef_2
-        # else:
-        #     self.a = (ro - 1) * koef_1 - (ro) * koef_2
-
     # ------ Cord X ------
     def _need_distance(self) -> None:
         self.distance_x = (
-            self.length
+            2 * self.length
             + 2.2 * self.prev_speed_x
             + (1 / self.lead_car.b_accceler - 1 / self.b_accceler)
-            * self.prev_speed_x**2
-            / 2
-            * 1.1
-            # + 100
+            * 1.1 * self.prev_speed_x**2
         )
 
     def target_function_f(self, x) -> float:

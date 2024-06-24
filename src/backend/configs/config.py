@@ -9,7 +9,7 @@ class RoyConfig(BaseModel):
     # ! кол-во акентов
     count_agent: int = 220
     # ! кол-во полос
-    count_lanes: int = 3
+    count_lanes: int = 4
 
     # ! радиус и длинна окржности [м]
     radius: float = 360
@@ -64,7 +64,7 @@ class CarFollowing(BaseModel):
 
 
 class RoyFollowing(BaseModel):
-    count_car: int = 5
+    count_car: int = 10
 
 
 class Setting(BaseSettings):

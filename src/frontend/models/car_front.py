@@ -3,8 +3,8 @@ from typing import Union
 
 from ..utils import blit_rotate_center
 
-from backend.models.car import Car
-from backend.models.car_ai import CarAi
+from backend.models.following.car import Car
+from backend.models.following.car_ai import CarAi
 
 
 class CarFront:

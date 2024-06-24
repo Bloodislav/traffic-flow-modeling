@@ -1,7 +1,7 @@
 import pygame
 
 from data.dto import Runtime
-from frontend.front import draw_object
+from controllers.front import draw_object
 
 
 def game_loop(runtime: Runtime) -> None:

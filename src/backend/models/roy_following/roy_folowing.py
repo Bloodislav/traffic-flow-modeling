@@ -6,8 +6,8 @@ sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from numpy import random
 
-from .roy3 import Roy3
-from .car_agent import CarAgent
+from roy.roy3 import Roy3
+from roy.car_agent import CarAgent
 from .car2 import Car
 from .car_ai2 import CarAi
 from configs.config import setting

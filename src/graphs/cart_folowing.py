@@ -5,56 +5,61 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from data.dto import BackRuntime
-from backend.init_objects import init_objects
+from controllers.init_objects import init_objects
 
 from collections import deque
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-# back_runtime: BackRuntime = init_objects()
+def anim():
+    back_runtime: BackRuntime = init_objects()
 
-# npoints = 60
-# x = deque([0], maxlen=npoints)
-# y = deque([0], maxlen=npoints)
-# fig, ax = plt.subplots()
-# plt.xlabel("t c")
-# plt.ylabel("mean_dist м")
-# plt.title("Средняя диставнция между участниками дорожного потока")
-# [line] = ax.step(y, x)
-# i  = 0
+    npoints = 100
+    x = deque([0], maxlen=npoints)
+    x_0 = deque([0], maxlen=npoints)
+    y = deque([0], maxlen=npoints)
+    fig_2, ax_2 = plt.subplots()
+    fig, ax = plt.subplots()
+    
+    plt.xlabel("t c")
+    plt.ylabel("mean_dist м")
+    plt.title("Средняя диставнция между участниками дорожного потока")
+    [line] = ax.step(y, x)
+    [line_2] = ax_2.step(y, x)
 
-# def update(dy):
-#     global i
-#     if i < 10:
-#         back_runtime.car.accelerate_x(2.0)
-#         i += 1
+    def update(dy):
+        back_runtime.car.accelerate_x(2.0)
 
-#     back_runtime.car.update()
-#     for ai_car in back_runtime.car_ai_list:
-#             ai_car.update()
+        back_runtime.car.update()
+        for ai_car in back_runtime.car_ai_list:
+                ai_car.update()
 
-#     a = [car_ai.distance_x for car_ai in back_runtime.car_ai_list]
-#     m_a = sum(a) / len(a)
+        a = [car_ai.distance_x for car_ai in back_runtime.car_ai_list]
+        m_a = sum(a) / len(a)
 
-#     x.append(m_a)
-#     y.append(y[-1] + dy)
+        x_0.append(back_runtime.car_ai_list[0].distance_x)
+        x.append(m_a)
+        y.append(y[-1] + dy)
 
-#     line.set_xdata(y)
-#     line.set_ydata(x)
+        line.set_xdata(y)
+        line.set_ydata(x)
+        
+        line_2.set_xdata(y)
+        line_2.set_ydata(x_0)
 
-#     ax.relim()  # update axes limits
-#     ax.autoscale_view(True, True, True)
-#     return line, ax
+        ax.relim()  # update axes limits
+        ax.autoscale_view(True, True, True)
+        
+        ax_2.relim()  # update axes limits
+        ax_2.autoscale_view(True, True, True)
+        return line, ax, line_2, ax_2
 
+    def data_gen():
+        while True:
+            yield 1
 
-# def data_gen():
-#     while True:
-#         yield 1
-
-
-# ani = animation.FuncAnimation(fig, update, frames=100 ,interval=0.5)
-# ani.save('car_following_distance.gif', dpi=120, writer='imagemagick')
-
+    ani = animation.FuncAnimation(fig, update, frames=100, interval=1)
+    ani.save('car_following_distance.gif', dpi=120, writer='imagemagick')
 
 def run(iterations: int, back_runtime: BackRuntime):
     i_accel: int = int(iterations * 0.1)
@@ -100,4 +105,5 @@ def main():
     plt.show()
 
 
-main()
+if __name__ == "__main__":
+    anim()

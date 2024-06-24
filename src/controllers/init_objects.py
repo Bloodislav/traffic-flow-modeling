@@ -1,8 +1,11 @@
-from .models.car import Car
-from .models.car_ai import CarAi
-from data.dto import BackRuntime
+import sys
+import os
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
 
-# TODO DTO - Setting_model
+from backend.models.following.car import Car
+from backend.models.following.car_ai import CarAi
+from data.dto import BackRuntime
 
 
 def init_objects() -> BackRuntime:
