@@ -18,7 +18,7 @@ class CarFront:
 
     def draw(self, screen: pygame.Surface) -> None:
         """Отрисовка машины на экране."""
-        cord: list = (self.model.x, self.model.y + 185)
+        cord: list = (self.model.x * 7, self.model.y + 185)
         blit_rotate_center(screen, self.image, cord, self.model.angle)
 
     def update_model(self) -> None:

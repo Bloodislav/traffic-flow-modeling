@@ -154,29 +154,27 @@ def graph():
     ays_earth: list[float] = []
     axs_sun: list[float] = []
     ays_sun: list[float] = []
-    
+
     x_earth: list[float] = []
     y_earth: list[float] = []
-    
+
     vxs_earth: list[float] = []
     vys_earth: list[float] = []
 
     for objects in j:
         axs_earth.append(objects[0].ax)
         ays_earth.append(objects[0].ay)
-        
+
         axs_sun.append(objects[1].ax)
         ays_sun.append(objects[1].ay)
-        
+
         vxs_earth.append(objects[1].vx)
         vys_earth.append(objects[1].vy)
-        
-        
 
     # строки (i), столбца(j), Текущая ячейка
     i: int = 2
     j: int = 2
-    
+
     plt.subplot(i, j, 1)
     _setting_graph()
     plt.plot(times, axs_earth, label="a_x")
@@ -185,8 +183,7 @@ def graph():
     plt.ylabel("Ускорение")
     plt.legend(loc="upper left")
     plt.title("Изменения ускорения земли")
-    
-    
+
     plt.subplot(i, j, 2)
     _setting_graph()
     plt.plot(times, axs_sun, label="a_x")
@@ -195,7 +192,7 @@ def graph():
     plt.ylabel("Ускорение")
     plt.legend(loc="upper left")
     plt.title("Изменения ускорения солнца")
-    
+
     plt.subplot(i, j, 3)
     _setting_graph()
     plt.plot(times, vxs_earth, label="v_x")
@@ -208,9 +205,11 @@ def graph():
     # show graph
     plt.show()
 
+
 import sys
+
 if __name__ == "__main__":
-    if len (sys.argv) > 1:
+    if len(sys.argv) > 1:
         graph()
     else:
         main()

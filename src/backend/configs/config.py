@@ -53,21 +53,24 @@ class CarFollowing(BaseModel):
     t_driver: float = 0.87
     c_road: float = 0.053
     koeff: float = 1.01
-    
+
     a_accceler: float = 2.5
     b_accceler: float = 2.5
-    
+
     change_lane_l: float = 0
     change_lane_r: float = 0
-    
+
     length_car: float = 5.7
+
 
 class RoyFollowing(BaseModel):
     count_car: int = 5
+
 
 class Setting(BaseSettings):
     roy: RoyConfig = RoyConfig()
     following: CarFollowing = CarFollowing()
     roy_follow: RoyFollowing = RoyFollowing()
+
 
 setting: Setting = Setting()

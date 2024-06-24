@@ -6,8 +6,8 @@ from data.dto import BackRuntime
 
 
 def init_objects() -> BackRuntime:
-    count_car: int = 4
-    car_length: float = 4.0
+    count_car: int = 5
+    car_length: float = 5.7
     max_speed: float = 17.0
     koeff: float = 1.01
 

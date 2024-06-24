@@ -61,22 +61,31 @@ def main() -> None:
         # кол-во перестреоний
         count: float = sum([agent.changing_line for agent in agents])
         changes_line.append(count)
-        
+
         # среднее изменение дистанции
-        disctance: list[float] = [agent.distance_x for agent in agents if agent.lane == back_sett.roy.count_lanes]
+        disctance: list[float] = [
+            agent.distance_x
+            for agent in agents
+            if agent.lane == back_sett.roy.count_lanes
+        ]
         # middle_disctance: float = float((sum(disctance) / len(disctance)))
         middle_disctance: float = float(max(disctance))
         middle_disctances.append(middle_disctance)
-        
+
         # среднее изменение дистанции
-        flow_density: list[float] = [agent.distance_x for agent in agents if agent.lane == back_sett.roy.count_lanes]
+        flow_density: list[float] = [
+            agent.distance_x
+            for agent in agents
+            if agent.lane == back_sett.roy.count_lanes
+        ]
         # middle_disctance: float = float((sum(disctance) / len(disctance)))
         middle_disctance: float = float(max(disctance))
-        
-        
-        middle_flow_density: float = len([agent for agent in agents if agent.lane == back_sett.roy.count_lanes]) / back_sett.roy.track_length
+
+        middle_flow_density: float = (
+            len([agent for agent in agents if agent.lane == back_sett.roy.count_lanes])
+            / back_sett.roy.track_length
+        )
         middle_flow_densities.append(middle_flow_density)
-        
 
     # ^ кол-во перестреоний
     i: int = 2
@@ -84,7 +93,7 @@ def main() -> None:
     # строки - 2, столбца - 3, Текущая ячейка - 1
     pylab.subplot(i, j, 1)
     pylab.scatter(speed_time, changes_line, s=3)
-    
+
     pylab.title("Количество перестреоний")
     pylab.xlabel("t, c")
     pylab.ylabel("количество пересроений")
@@ -98,7 +107,7 @@ def main() -> None:
     # строки - 1, столбца - 2, Текущая ячейка - 2
     pylab.subplot(i, j, 2)
     pylab.scatter(flow_densities, flow_rates, s=2)
-    
+
     pylab.title("Функциональная диограмма")
     pylab.xlabel("p (1/м)")
     pylab.ylabel("q (1/с)")
@@ -112,7 +121,7 @@ def main() -> None:
     # строки - 1, столбца - 2, Текущая ячейка - 1
     pylab.subplot(i, j, 3)
     pylab.plot(speed_time, middle_speeds)  # , alpha=0.8)
-    
+
     pylab.title("Средняя скорость")
     pylab.xlabel("t, c")
     pylab.ylabel("v, м/с")
@@ -120,23 +129,22 @@ def main() -> None:
 
     # setting graph - 1
     _setting_graph()
-    
+
     # ^ средняя дистанция
     # строки - 1, столбца - 2, Текущая ячейка - 1
     pylab.subplot(2, j, 4)
     pylab.plot(speed_time, middle_disctances)  # , alpha=0.8)
-    
+
     pylab.title("Средняя дистанция")
     pylab.xlabel("t, c")
     pylab.ylabel("d, м")
     _setting_graph()
-    
 
     # ^ средняя плотность полосы
     # строки - 1, столбца - 2, Текущая ячейка - 1
     pylab.subplot(2, j, 5)
     pylab.plot(speed_time, middle_flow_densities)  # , alpha=0.8)
-    
+
     pylab.title("Средняя плотность полосы")
     pylab.xlabel("t, c")
     pylab.ylabel("d, м")

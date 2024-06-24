@@ -8,6 +8,7 @@ from .car import Car
 # TODO: динамическое определние диставнции
 # TODO DTO
 
+
 class CarAi(Car):
     def __init__(
         self,
@@ -73,6 +74,7 @@ class CarAi(Car):
             * self.prev_speed_x**2
             / 2
             * 1.1
+            # + 100
         )
 
     def target_function_f(self, x) -> float:
@@ -85,8 +87,9 @@ class CarAi(Car):
         diff_x_v: float = quad(self.target_function_f, 0, self.max_speed_x)
         diff_x_v = diff_x_v[0]
 
-        ro = self.ro_func(diff_x, self.distance_x, self.distance_x / 2)
-        v_h = self.v_h_func(diff_x_v, self.distance_x, self.max_speed_x)
+        ro = self.ro_func(diff_x, self.distance_x, 4 * self.length)
+        # v_h = self.v_h_func(diff_x_v, self.distance_x, self.max_speed_x)
+        v_h = self.v_h_func(diff_x, 2 * self.length, self.max_speed_x)
 
         koef_1 = self.a_accceler * (
             1 - (self.prev_speed_x / self.max_speed_x) ** self.koeff
@@ -98,10 +101,7 @@ class CarAi(Car):
         else:
             self.a_x = (ro - 1) * koef_1 - (ro) * koef_2
 
-        self.a_x = (
-            self.a_x 
-            if self.a_x.real * 0.87 ** 2 / self.distance_x >= 0 else 0
-        )
+        self.a_x = self.a_x if self.a_x * 1.6**2 / 2 * self.length >= 0.0 else 0
 
     # ------ Cord Y ------ #
     def accelerate_ai_y(self) -> None:

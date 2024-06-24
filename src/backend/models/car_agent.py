@@ -33,8 +33,8 @@ class CarAgent:
 
         self.distance: float = 0
         self.track_complete: bool = False
-        
-        self.distance_x: float = 0.0 
+
+        self.distance_x: float = 0.0
 
     # ---------------------------------------------------------------------------------------------------#
     def __new_velocity(self) -> float:
